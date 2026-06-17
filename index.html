@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Happy Birthday 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Great+Vibes&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Passcode Screen -->
+  <div id="passcode-screen" class="screen active">
+    <div class="passcode-bg">
+      <div class="floating-hearts-bg" id="passcode-hearts"></div>
+    </div>
+    <div class="passcode-container">
+      <div class="passcode-card">
+        <div class="passcode-icon">💝</div>
+        <h1 class="passcode-title">Món quà only dành choa em Nhiii </h1>
+        <p class="passcode-subtitle">Nhập mật khẩu để vô (gợi ý nhỏ choa bé 1806)</p>
+        <div class="passcode-input-wrapper">
+          <input
+            type="password"
+            id="passcode-input"
+            class="passcode-input"
+            placeholder="• • • •"
+            maxlength="4"
+            inputmode="numeric"
+            autocomplete="off"
+          >
+          <button id="passcode-btn" class="passcode-btn" aria-label="Mở quà">
+            <span>💖</span>
+          </button>
+        </div>
+        <p id="passcode-error" class="passcode-error" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Birthday Screen -->
+  <div id="birthday-screen" class="screen">
+    <div class="birthday-bg">
+      <div class="light-orb light-orb-1"></div>
+      <div class="light-orb light-orb-2"></div>
+      <div class="light-orb light-orb-3"></div>
+      <div class="floating-hearts-bg" id="birthday-hearts"></div>
+    </div>
+
+  <canvas id="fireworks-canvas" class="fireworks-canvas"></canvas>
+
+    <main class="birthday-content">
+      <header class="birthday-header" id="birthday-header">
+        <h1 class="birthday-header-title">
+          Chúc Mừng Sinh Nhật<br>
+          <span class="birthday-header-name">Lê Nguyễn Yến Nhi</span>
+        </h1>
+      </header>
+
+      <!-- Heart & Orbiting Photos -->
+      <div class="heart-orbit-wrapper">
+      <div class="heart-orbit-container" id="heart-orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-track" id="orbit-track">
+          <div class="orbit-photo" data-index="0">
+            <button type="button" class="orbit-photo-inner" aria-label="Xem ảnh kỷ niệm 1">
+              <img src="images/photo1.jpg" alt="Kỷ niệm 1" loading="lazy">
+            </button>
+          </div>
+          <div class="orbit-photo" data-index="1">
+            <button type="button" class="orbit-photo-inner" aria-label="Xem ảnh kỷ niệm 2">
+              <img src="images/photo2.jpg" alt="Kỷ niệm 2" loading="lazy">
+            </button>
+          </div>
+          <div class="orbit-photo" data-index="2">
+            <button type="button" class="orbit-photo-inner" aria-label="Xem ảnh kỷ niệm 3">
+              <img src="images/photo3.jpg" alt="Kỷ niệm 3" loading="lazy">
+            </button>
+          </div>
+          <div class="orbit-photo" data-index="3">
+            <button type="button" class="orbit-photo-inner" aria-label="Xem ảnh kỷ niệm 4">
+              <img src="images/photo4.jpg" alt="Kỷ niệm 4" loading="lazy">
+            </button>
+          </div>
+          <div class="orbit-photo" data-index="4">
+            <button type="button" class="orbit-photo-inner" aria-label="Xem ảnh kỷ niệm 5">
+              <img src="images/photo5.jpg" alt="Kỷ niệm 5" loading="lazy">
+            </button>
+          </div>
+          <div class="orbit-photo" data-index="5">
+            <button type="button" class="orbit-photo-inner" aria-label="Xem ảnh kỷ niệm 6">
+              <img src="images/photo6.jpg" alt="Kỷ niệm 6" loading="lazy">
+            </button>
+          </div>
+        </div>
+        <div class="hand-heart-wrapper" id="heart-3d">
+          <div class="heart-particles" id="heart-particles" aria-hidden="true"></div>
+          <div class="hand-heart" id="hand-heart">
+            <div class="heart-glow"></div>
+            <div class="heart-flash-bloom" aria-hidden="true"></div>
+            <svg class="hand-heart-svg" viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <radialGradient id="orbGradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+                  <stop offset="35%" stop-color="#ffb3d9"/>
+                  <stop offset="100%" stop-color="#e84393" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="fillGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+                  <stop offset="0%" stop-color="#ff6b9d"/>
+                  <stop offset="45%" stop-color="#e84393"/>
+                  <stop offset="100%" stop-color="#c9184a"/>
+                </linearGradient>
+                <radialGradient id="fillShine" cx="35%" cy="28%" r="55%">
+                  <stop offset="0%" stop-color="#fff" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+                </radialGradient>
+                <filter id="heartGlowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <filter id="orbGlowFilter" x="-200%" y="-200%" width="500%" height="500%">
+                  <feGaussianBlur stdDeviation="4" result="b"/>
+                  <feMerge>
+                    <feMergeNode in="b"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <filter id="flashFilter" x="-80%" y="-80%" width="260%" height="260%">
+                  <feGaussianBlur stdDeviation="8"/>
+                </filter>
+              </defs>
+
+              <g id="heart-body" class="heart-body">
+                <path class="heart-border-outer" d="M 100 178 L 88 166.5 C 46 128 16.67 102.33 16.67 70.83 C 16.67 41.83 36.83 25 62.5 25 C 77.25 25 90.5 31.5 100 42.5 C 109.5 31.5 122.75 25 137.5 25 C 163.17 25 183.33 41.83 183.33 70.83 C 183.33 102.33 154 128 112 166.5 L 100 178 Z"/>
+                <path class="heart-fill" d="M 100 178 L 88 166.5 C 46 128 16.67 102.33 16.67 70.83 C 16.67 41.83 36.83 25 62.5 25 C 77.25 25 90.5 31.5 100 42.5 C 109.5 31.5 122.75 25 137.5 25 C 163.17 25 183.33 41.83 183.33 70.83 C 183.33 102.33 154 128 112 166.5 L 100 178 Z"/>
+                <path class="heart-fill-shine" d="M 100 178 L 88 166.5 C 46 128 16.67 102.33 16.67 70.83 C 16.67 41.83 36.83 25 62.5 25 C 77.25 25 90.5 31.5 100 42.5 C 109.5 31.5 122.75 25 137.5 25 C 163.17 25 183.33 41.83 183.33 70.83 C 183.33 102.33 154 128 112 166.5 L 100 178 Z"/>
+                <path id="heart-draw-path" class="heart-draw-path" d="M 100 178 L 88 166.5 C 46 128 16.67 102.33 16.67 70.83 C 16.67 41.83 36.83 25 62.5 25 C 77.25 25 90.5 31.5 100 42.5 C 109.5 31.5 122.75 25 137.5 25 C 163.17 25 183.33 41.83 183.33 70.83 C 183.33 102.33 154 128 112 166.5 L 100 178"/>
+              </g>
+              <path class="heart-trail-glow" id="heart-trail-glow" d="M 100 178 L 88 166.5 C 46 128 16.67 102.33 16.67 70.83 C 16.67 41.83 36.83 25 62.5 25 C 77.25 25 90.5 31.5 100 42.5 C 109.5 31.5 122.75 25 137.5 25 C 163.17 25 183.33 41.83 183.33 70.83 C 183.33 102.33 154 128 112 166.5 L 100 178"/>
+              <g id="heart-trail-dots" class="heart-trail-dots"></g>
+              <circle id="heart-orb" class="heart-orb" cx="100" cy="95" r="0" fill="url(#orbGradient)" filter="url(#orbGlowFilter)"/>
+              <circle id="heart-orb-core" class="heart-orb-core" cx="100" cy="95" r="0" fill="#fff"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Birthday Message -->
+      <section class="message-section" id="message-section">
+        <h2 class="message-title">💖 Gửi người anh yêu nhất 💖</h2>
+        <div class="message-letter">
+          <p>Chúc mừng sinh nhật em yêu của anh❤️</p>
+          <p>Cảm ơn em đã yêu anh và bên anh trong những khoảnh khắc này mặc dù chưa được lâu nhưng anh rất trân trọng nó đóa 🥺</p>
+          <p>Anh mong rằng tuổi mới sẽ mang đến cho em thật nhiều niềm vui, sức khỏe và hạnh phúc và luôn luôn xinh xắn và nhiều may mắn mắn trong cuộc sống.❤️‍🔥❤️‍🔥🍀🍀</p>
+          <p>Dù tương lai anh khôm bic như nèo, nhưng anh vẫn mong ở bên em lâu dài hơn và anh biết đôi lúc anh có lúc nóng giận hem kiểm soát được làm em buồn nhưng ahh hứa sẽ thay đổi, cải thiện hơn để hem làm Em đáng yêu buồn.</p>
+          <p>Mỗi lúc bên em Nhii là anh cảm thấy rất vui vẻ và hạnh phúc💕💕</p>
+          <p>Em là vầng trăng, còn anh là chú cuội. Dù có xa cách lòng anh vẫn luôn yêu em❤️‍🔥❤️‍🔥</p>
+          <p>Chúc em luôn xinh đẹp, mạnh mẽ và được yêu thương trọn vẹn.</p>
+          <p class="message-signature">Yêu em Lê Nguyễn Yến Nhiii nhiều lắm 💕</p>
+        </div>
+      </section>
+
+      <!-- Audio Player -->
+      <section class="audio-section" id="audio-section">
+        <button id="audio-play-btn" class="audio-btn" aria-label="Nghe lời chúc">
+          <span class="audio-btn-icon">🎵</span>
+          <span class="audio-btn-text">lời chúc ghi âm từ anh Hoàng tồi tệ.</span>
+        </button>
+        <div id="audio-player" class="audio-player hidden">
+          <div class="audio-waves" id="audio-waves">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <button id="audio-pause-btn" class="audio-pause-btn" aria-label="Tạm dừng">
+            ⏸ Tạm dừng
+          </button>
+        </div>
+        <audio id="voice-audio" src="audio/loichuc.mp3" preload="auto"></audio>
+        <audio id="bg-music" loop preload="auto"></audio>
+      </section>
+    </main>
+  </div>
+
+  <!-- Photo Lightbox -->
+  <div id="photo-lightbox" class="photo-lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-dialog">
+      <button type="button" class="lightbox-close" aria-label="Đóng ảnh">&times;</button>
+      <img id="lightbox-img" src="" alt="">
+      <p class="lightbox-hint">Chạm bên ngoài hoặc ✕ để đóng</p>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
